@@ -23,8 +23,8 @@ body{
     grid-column: 2 / 3;
     grid-row: 1 / 2;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr;
 }
 
 .body{
@@ -40,4 +40,9 @@ body{
     position: relative;
     z-index: 1;
     box-shadow: 1px 1px 3px grey;
+}
+
+.larger{
+    font-size: larger;
+    font-weight: bold;
 }
