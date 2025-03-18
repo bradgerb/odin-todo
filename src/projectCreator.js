@@ -13,11 +13,17 @@ class Project {
     };
 };
 
-console.table(myProjects);
+const newProject = ()=>{
+    const newProject = new Project(prompt("Title"), prompt("Description"), prompt("Due Date"), prompt("Priority"));
+    newProject.addProject(newProject);
+};
 
 const defaultProject = new Project("placeholderTitle", "placeholderDescription", "placeholderDueDate", "placeholderPriority");
 defaultProject.addProject(defaultProject);
 
+console.table(myProjects);
+
+newProject();
 console.table(myProjects);
 
 export {myProjects};
