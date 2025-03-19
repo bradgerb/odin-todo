@@ -1,4 +1,4 @@
-const myTodos = [];
+const myTodos = ["Thing 1", "Thing 2", "test"];
 
 class Todo {
     constructor (title, description, dueDate, priority){
