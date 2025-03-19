@@ -1,2 +1,5 @@
 import "./styles.css";
-import { myTodos } from "./todoCreator.js";
+import { myTodos, newTodo } from "./todoCreator.js";
+
+newTodo();
+console.table(myTodos);
