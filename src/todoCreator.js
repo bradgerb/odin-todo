@@ -18,7 +18,4 @@ const newTodo = ()=>{
     newTodo.addTodo(newTodo);
 };
 
-// newTodo();
-// console.table(myTodos);
-
 export {myTodos, newTodo};
