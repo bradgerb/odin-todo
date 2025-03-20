@@ -23,7 +23,7 @@ body{
     grid-column: 2 / 3;
     grid-row: 1 / 2;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 1fr;
     grid-template-rows: 1fr;
 }
 
@@ -33,7 +33,7 @@ body{
     grid-row: 2 / 3;
     display: grid;
     grid-template-columns: 1fr;
-    grid-auto-rows: 50px;
+    grid-auto-rows: 80px;
 }
 
 .container .header{
@@ -45,6 +45,22 @@ body{
 .larger{
     font-size: larger;
     font-weight: bold;
+}
+
+.card{
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    /* white-space: pre-wrap; */
+    gap: 10px;
+}
+
+.XL{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10vh;
+    font-weight: bolder;
 }
 
 /* .btnContainer{
