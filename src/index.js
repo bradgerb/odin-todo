@@ -8,3 +8,4 @@ console.table(myProjects);
 console.log(myProjects[0].todos[1]);
 console.table(myProjects[0].todos);
 displayProjects();
+displayProjects();

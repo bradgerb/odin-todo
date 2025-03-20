@@ -53,6 +53,7 @@ body{
     padding-left: 10px;
     /* white-space: pre-wrap; */
     gap: 10px;
+    border-bottom: 2px solid black;
 }
 
 .XL{
@@ -62,12 +63,6 @@ body{
     font-size: 10vh;
     font-weight: bolder;
 }
-
-/* .btnContainer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-} */
 
 /* .button{
     background-color: #1992d4;
