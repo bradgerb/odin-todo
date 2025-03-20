@@ -3,9 +3,11 @@ import { myTodos } from "./todoCreator";
 const myProjects = [];
 
 class Project {
-    constructor (title, todos){
+    constructor (title, dueDate, priority, todos){
         this.title = title;
-        this.todos = todos
+        this.dueDate = dueDate;
+        this.priority = priority;
+        this.todos = todos;
     };
 
     addProject(projectName){
@@ -14,7 +16,7 @@ class Project {
 };
 
 const defaultProject = (function(){
-    const placeholder = new Project("placeholderTitle", myTodos);
+    const placeholder = new Project("placeholderTitle", "Today", "Critical", myTodos);
     placeholder.addProject(placeholder);
 })();
 
