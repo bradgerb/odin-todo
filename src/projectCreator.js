@@ -18,4 +18,4 @@ const defaultProject = (function(){
     placeholder.addProject(placeholder);
 })();
 
-export { myProjects };
+export { myProjects, Project };

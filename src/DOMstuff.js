@@ -1,4 +1,5 @@
 import { myProjects } from "./projectCreator";
+import { newProject } from "./formData";
 
 const container = document.querySelector(".body");
 
@@ -37,8 +38,13 @@ const displayProjects = ()=>{
         index++;
 
         container.appendChild(card);
-    }
-    console.log(myProjects);
+    };
 };
 
-export { displayProjects }
+const clearCards = ()=>{
+    for (let i = 0; i < myProjects.length; i++){
+        container.removeChild(container.lastChild);
+    };
+};
+
+export { displayProjects, myProjects, clearCards }
