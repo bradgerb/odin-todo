@@ -20,10 +20,12 @@ const displayProjects = ()=>{
 
         const card = document.createElement("div");
         card.classList.add("card");
+        card.classList.add("larger");
         card.textContent = `Project name: ${myProjects[i].title}`;
 
         const addTodoButton = document.createElement("button");
         addTodoButton.setAttribute("ID", `${index}`);
+        addTodoButton.classList.add("cardButton");
         addTodoButton.textContent = "Add todo";
         // addTodoButton.addEventListener("click", addTodo);
         card.appendChild(addTodoButton);
@@ -32,7 +34,7 @@ const displayProjects = ()=>{
         removeProjectButton.setAttribute("ID", `${index}`);
         removeProjectButton.classList.add("cardButton");
         removeProjectButton.textContent = "Remove Project";
-        // removeProjectButton.addEventListener("click", removeProject);
+        removeProjectButton.addEventListener("click", removeProject);
         card.appendChild(removeProjectButton);
 
         index++;
@@ -45,6 +47,15 @@ const clearCards = ()=>{
     for (let i = 0; i < myProjects.length; i++){
         container.removeChild(container.lastChild);
     };
+};
+
+function removeProject(){
+
+    let a = this.id;
+
+    clearCards();
+    myProjects.splice(a, 1);
+    displayProjects();
 };
 
 export { displayProjects, myProjects, clearCards }
