@@ -8,8 +8,10 @@ newProjectForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
     const formData = new FormData(newProjectForm);
+
+    let todoList = ["test"];
     
-    const newProject = new Project(formData.get("projectName"), newTodo);
+    const newProject = new Project(formData.get("projectName"), todoList);
 
     clearCards();
     newProject.addProject(newProject);

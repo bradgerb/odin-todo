@@ -1,5 +1,6 @@
 import { myProjects } from "./projectCreator";
 import { newProject } from "./formData";
+import { defaultTodo, newTodo } from "./todoCreator";
 
 const container = document.querySelector(".body");
 
@@ -7,16 +8,6 @@ const displayProjects = ()=>{
     let index = 0;
 
     for(let i = 0; i < myProjects.length; i++){
-
-        // let priority;
-
-        // if (myProjects[i].priority === 'low'){
-        //     priority = "low";
-        // } else if(myProjects[i].priority === 'medium'){
-        //     priority = "medium";
-        // } else{
-        //     priority = "high";
-        // };
 
         const card = document.createElement("div");
         card.classList.add("card");
@@ -27,7 +18,7 @@ const displayProjects = ()=>{
         addTodoButton.setAttribute("ID", `${index}`);
         addTodoButton.classList.add("cardButton");
         addTodoButton.textContent = "Add todo";
-        // addTodoButton.addEventListener("click", addTodo);
+        addTodoButton.addEventListener("click", newTodo);
         card.appendChild(addTodoButton);
 
         const removeProjectButton = document.createElement("button");
@@ -37,10 +28,17 @@ const displayProjects = ()=>{
         removeProjectButton.addEventListener("click", removeProject);
         card.appendChild(removeProjectButton);
 
+        const todos = document.createElement("div");
+        todos.classList.add("todoContainer");
+        // todos.textContent = `${defaultTodo}`;
+        card.appendChild(todos);
+
         index++;
 
         container.appendChild(card);
     };
+    console.table(myProjects[0]);
+    console.table(myProjects[1]);
 };
 
 const clearCards = ()=>{

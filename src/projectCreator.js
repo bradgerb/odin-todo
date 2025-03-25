@@ -1,4 +1,4 @@
-import { myTodos } from "./todoCreator";
+import { placeholderTodo } from "./todoCreator";
 
 const myProjects = [];
 
@@ -14,8 +14,8 @@ class Project {
 };
 
 const defaultProject = (function(){
-    const placeholder = new Project("Placeholder", myTodos);
-    placeholder.addProject(placeholder);
+    const placeholderProject = new Project("Placeholder", placeholderTodo);
+    placeholderProject.addProject(placeholderProject);
 })();
 
 export { myProjects, Project };

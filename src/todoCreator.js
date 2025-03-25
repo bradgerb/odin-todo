@@ -1,4 +1,4 @@
-const myTodos = ["Thing 1", "Thing 2", "test"];
+const myTodos = [];
 
 class Todo {
     constructor (title, description, dueDate, priority){
@@ -13,9 +13,14 @@ class Todo {
     };
 };
 
+// const defaultTodo = (function(){
+    const placeholderTodo = new Todo("Default", "This is where your list of todos goes", "Now", "low");
+//     placeholderTodo.addTodo(placeholderTodo);
+// })();
+
 const newTodo = ()=>{
     const newTodo = new Todo(prompt("Title"), prompt("Description"), prompt("Due Date"), prompt("Priority"));
     newTodo.addTodo(newTodo);
 };
 
-export {myTodos, newTodo};
+export {newTodo, placeholderTodo};
