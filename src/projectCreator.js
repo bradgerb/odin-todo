@@ -14,7 +14,10 @@ class Project {
 };
 
 const defaultProject = (function(){
-    const placeholderProject = new Project("Placeholder", placeholderTodo);
+
+    let todos = [placeholderTodo];
+
+    const placeholderProject = new Project("Placeholder", todos);
     placeholderProject.addProject(placeholderProject);
 })();
 

@@ -9,7 +9,7 @@ newProjectForm.addEventListener("submit", function (e) {
 
     const formData = new FormData(newProjectForm);
 
-    let todoList = ["test"];
+    let todoList = [];
     
     const newProject = new Project(formData.get("projectName"), todoList);
 

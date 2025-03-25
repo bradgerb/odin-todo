@@ -43,20 +43,21 @@ const displayProjects = ()=>{
 
             projectContainer.appendChild(cardContainer);
 
-            const todos = document.createElement("div");
-            todos.classList.add("todoContainer");
-            todos.setAttribute("ID", "lowPrio");
-            todos.textContent = `${myProjects[index].todos.title}`;
-            projectContainer.appendChild(todos);
+            for(let i = 0; i < myProjects[index].todos.length; i++){
+
+                const todos = document.createElement("div");
+                todos.classList.add("todoContainer");
+                todos.setAttribute("ID", "lowPrio");
+                todos.textContent = `${myProjects[index].todos[i].title}`;
+                projectContainer.appendChild(todos);
+                
+            };
 
         container.appendChild(projectContainer);
 
         index++;
-
         
     };
-    console.table(myProjects[0]);
-    console.table(myProjects[1]);
 };
 
 const clearCards = ()=>{
