@@ -5,6 +5,7 @@ import { defaultTodo, newTodo } from "./todoCreator";
 const container = document.querySelector(".body");
 
 const displayProjects = ()=>{
+
     let index = 0;
 
     for(let i = 0; i < myProjects.length; i++){
@@ -48,7 +49,7 @@ const displayProjects = ()=>{
                 const todos = document.createElement("div");
                 todos.classList.add("todoContainer");
                 todos.setAttribute("ID", "lowPrio");
-                todos.textContent = `${myProjects[index].todos[i].title}`;
+                todos.textContent = `Todo: ${myProjects[index].todos[i].title};\u00A0 \u00A0 Description: ${myProjects[index].todos[i].description}`;
                 projectContainer.appendChild(todos);
                 
             };
