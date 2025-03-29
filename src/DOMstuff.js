@@ -49,7 +49,9 @@ const displayProjects = ()=>{
                 const todos = document.createElement("div");
                 todos.classList.add("todoContainer");
                 todos.setAttribute("ID", "lowPrio");
+                
                 todos.textContent = `Todo: ${myProjects[index].todos[i].title};\u00A0 \u00A0 Description: ${myProjects[index].todos[i].description}`;
+                
                 projectContainer.appendChild(todos);
                 
             };
@@ -75,5 +77,19 @@ function removeProject(){
     myProjects.splice(a, 1);
     displayProjects();
 };
+
+function overlayOn() {
+    document.getElementById("overlay").style.display = "block";
+};
+
+function overlayOff() {
+    document.getElementById("overlay").style.display = "none";
+};
+
+const overlayStartButton = document.querySelector(".overlayTest");
+overlayStartButton.addEventListener("click", overlayOn);
+
+const overlayOffButton = document.querySelector(".overlayOff");
+overlayOffButton.addEventListener("click", overlayOff);
 
 export { displayProjects, myProjects, clearCards }
