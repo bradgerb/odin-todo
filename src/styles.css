@@ -102,13 +102,17 @@ body{
 #overlay {
     position: fixed; /* Sit on top of the page content */
     display: none; /* Hidden by default */
-    width: 50%; /* Full width (cover the whole page) */
-    height: 50%; /* Full height (cover the whole page) */
+    width: 50%;
+    height: 50%;
     top: 25%;
     left: 25%;
     right: 0;
     bottom: 0;
-    background-color: rgba(0,0,0,0.75); /* Black background with opacity */
+    background-color: white;
+    border:5px solid #1992d4;
+    border-radius: 30px;
     z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
     cursor: pointer; /* Add a pointer on hover */
+    align-items: center;
+    justify-content: center;
   }

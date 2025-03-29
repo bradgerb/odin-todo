@@ -79,14 +79,14 @@ function removeProject(){
 };
 
 function overlayOn() {
-    document.getElementById("overlay").style.display = "block";
+    document.getElementById("overlay").style.display = "flex";
 };
 
 function overlayOff() {
     document.getElementById("overlay").style.display = "none";
 };
 
-const overlayStartButton = document.querySelector(".overlayTest");
+const overlayStartButton = document.querySelector(".overlayForm");
 overlayStartButton.addEventListener("click", overlayOn);
 
 const overlayOffButton = document.querySelector(".overlayOff");
