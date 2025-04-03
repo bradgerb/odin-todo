@@ -1,7 +1,10 @@
 import { myProjects } from "./projectCreator";
 import { clearCards, displayProjects } from "./DOMstuff";
+import { newTodoForm } from "./formData";
+import { overlayOn } from "./DOMstuff";
 
 const myTodos = [];
+let currentIndex = 0;
 
 class Todo {
     constructor (title, description, dueDate, priority){
@@ -16,13 +19,10 @@ const placeholderTodo = new Todo("Default", "Add some more todos", "Now", "low")
 
 function newTodo(){
 
-    let index = this.id;
-    console.log(index);
-
-    const newTodo = new Todo(prompt("Title"), prompt("Description"), prompt("Due Date"), prompt("Priority"));
-    clearCards();
-    myProjects[index].todos.push(newTodo);
-    displayProjects();
+    currentIndex = this.id;
+    console.log(currentIndex);
+    
+    overlayOn();
 };
 
-export {newTodo, placeholderTodo};
+export {newTodo, placeholderTodo, Todo, currentIndex};
