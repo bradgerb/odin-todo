@@ -1,9 +1,5 @@
-import { myProjects } from "./projectCreator";
-import { clearCards, displayProjects } from "./DOMstuff";
-import { newTodoForm } from "./formData";
 import { overlayOn } from "./DOMstuff";
 
-const myTodos = [];
 let currentIndex = 0;
 
 class Todo {

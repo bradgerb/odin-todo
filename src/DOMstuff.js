@@ -1,6 +1,6 @@
 import { myProjects } from "./projectCreator";
 import { newProject } from "./formData";
-import { defaultTodo, newTodo } from "./todoCreator";
+import { newTodo } from "./todoCreator";
 
 const container = document.querySelector(".body");
 
@@ -89,4 +89,4 @@ function overlayOff() {
 const overlayOffButton = document.querySelector(".overlayOff");
 overlayOffButton.addEventListener("click", overlayOff);
 
-export { displayProjects, myProjects, clearCards, overlayOn, overlayOff }
+export { displayProjects, clearCards, overlayOn, overlayOff }

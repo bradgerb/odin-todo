@@ -1,4 +1,4 @@
 import "./styles.css";
-import { displayProjects, myProjects } from "./DOMstuff";
+import { displayProjects } from "./DOMstuff";
 
 displayProjects();
