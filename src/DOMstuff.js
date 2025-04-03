@@ -89,4 +89,4 @@ function overlayOff() {
 const overlayOffButton = document.querySelector(".overlayOff");
 overlayOffButton.addEventListener("click", overlayOff);
 
-export { displayProjects, myProjects, clearCards, overlayOn }
+export { displayProjects, myProjects, clearCards, overlayOn, overlayOff }

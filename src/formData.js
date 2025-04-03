@@ -1,4 +1,4 @@
-import { displayProjects, clearCards } from "./DOMstuff";
+import { displayProjects, clearCards, overlayOff } from "./DOMstuff";
 import { Project } from "./projectCreator"
 import { Todo, currentIndex } from "./todoCreator";
 import { myProjects } from "./projectCreator";
@@ -37,6 +37,7 @@ newTodoForm.addEventListener("submit", function (e) {
         myProjects[index].todos.push(newTodo);
         console.table(myProjects[index].todos);
         displayProjects();
+        overlayOff();
 });
 
 export { newTodoForm };
