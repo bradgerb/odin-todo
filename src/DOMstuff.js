@@ -1,6 +1,6 @@
 import { myProjects } from "./projectCreator";
 import { newTodoForm } from "./formData";
-import { newTodo } from "./todoCreator";
+import { currentIndex, newTodo } from "./todoCreator";
 import trash from "./img/trash.svg"
 
 const container = document.querySelector(".body");
@@ -36,7 +36,7 @@ const displayProjects = ()=>{
                         removeProjectButton.setAttribute("ID", `${index}`);
                         removeProjectButton.classList.add("cardButton");
                         removeProjectButton.textContent = "Remove Project";
-                        removeProjectButton.addEventListener("click", removeProject);
+                        removeProjectButton.addEventListener("click", ()=>{removeProject(index)});
                         buttonContainer.appendChild(removeProjectButton);
 
                     card.appendChild(buttonContainer);
@@ -58,10 +58,14 @@ const displayProjects = ()=>{
 
                 const todoButtons = document.createElement("div");
                 todoButtons.classList.add("todoButtonContainer");
+
                     const trashButton = document.createElement("img");
+                    trashButton.setAttribute("ID", i);
                     trashButton.src = trash;
                     trashButton.style.height = "18px";
+                    trashButton.addEventListener("click", removeTodo);
                     todoButtons.appendChild(trashButton);
+
                 todos.appendChild(todoButtons);
                 
                 projectContainer.appendChild(todos);
@@ -88,6 +92,13 @@ function removeProject(){
     clearCards();
     myProjects.splice(a, 1);
     displayProjects();
+};
+
+function removeTodo(index){
+    
+    console.log(`Project ${index}`)
+    console.log(`Remove Todo ${this.id}`);
+    
 };
 
 function overlayOn() {
