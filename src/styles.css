@@ -66,6 +66,13 @@ body{
     padding: 10px 0 10px 30px;
     gap: 10px;
     border-top: 1px solid grey;
+    display: flex;
+    justify-content: space-between;
+}
+
+.todoButtonContainer{
+    display: flex;
+    padding-right: 10px;
 }
 
 #lowPriority{

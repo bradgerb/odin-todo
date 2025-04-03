@@ -1,6 +1,7 @@
 import { myProjects } from "./projectCreator";
 import { newTodoForm } from "./formData";
 import { newTodo } from "./todoCreator";
+import trash from "./img/trash.svg"
 
 const container = document.querySelector(".body");
 
@@ -54,6 +55,14 @@ const displayProjects = ()=>{
                     todos.setAttribute("ID", "mediumPriority")
                 } else todos.setAttribute("ID", "highPriority");
                 todos.textContent = `Todo: ${myProjects[index].todos[i].title};\u00A0 \u00A0 Description: ${myProjects[index].todos[i].description}`;
+
+                const todoButtons = document.createElement("div");
+                todoButtons.classList.add("todoButtonContainer");
+                    const trashButton = document.createElement("img");
+                    trashButton.src = trash;
+                    trashButton.style.height = "18px";
+                    todoButtons.appendChild(trashButton);
+                todos.appendChild(todoButtons);
                 
                 projectContainer.appendChild(todos);
                 
