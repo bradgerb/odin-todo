@@ -1,5 +1,5 @@
 import { myProjects } from "./projectCreator";
-import { newProject } from "./formData";
+import { newTodoForm } from "./formData";
 import { newTodo } from "./todoCreator";
 
 const container = document.querySelector(".body");
