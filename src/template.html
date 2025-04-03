@@ -13,32 +13,29 @@
                 <input type="text" id="projectName" name="projectName" placeholder="Please name me" required>               
                 <br><br><input type="submit" value="Add project">
             </form>
-            <br>
-            <button class="overlayForm">Test overlay</button>
-            <div id="overlay">
-
-                <form action="" method="post" id="newTodoForm">
-                    <label for="todoName">Todo name:</label><br>
-                    <input type="text" id="todoName" name="todoName" placeholder="Please name me" required>               
-                    <br><br><label for="projectDue">Due date:</label><br>
-                    <input type="text" id="projectDue" name="projectDue" placeholder="Yesterday" required>
-                    <br><br>Priority:<br>
-                    <input type="radio" id="low" name="priority" value="low" required>
-                    <label for="low">Low</label><br>
-                    <input type="radio" id="medium" name="priority" value="medium" required>
-                    <label for="medium">Medium</label><br>
-                    <input type="radio" id="high" name="priority" value="high" required>
-                    <label for="high">High</label>
-                    <br><br><input type="submit" value="Add todo">
-                    <button class="overlayOff">Cancel</button>
-                </form>
-            </div>
+            <!-- <br>
+            <button class="overlayForm">Test overlay</button> -->
         </div>
         <div class="header">
             <span class="XL">Odin Projects!</span>
         </div>
-        <div class="body">
-
+        <div class="body"></div>
+        <div id="overlay">
+            <form action="" method="post" id="newTodoForm">
+                <label for="todoName">Todo name:</label><br>
+                <input type="text" id="todoName" name="todoName" placeholder="Please name me" required>               
+                <br><br><label for="projectDue">Due date:</label><br>
+                <input type="text" id="projectDue" name="projectDue" placeholder="Yesterday" required>
+                <br><br>Priority:<br>
+                <input type="radio" id="low" name="priority" value="low" required>
+                <label for="low">Low</label><br>
+                <input type="radio" id="medium" name="priority" value="medium" required>
+                <label for="medium">Medium</label><br>
+                <input type="radio" id="high" name="priority" value="high" required>
+                <label for="high">High</label>
+                <br><br><input type="submit" value="Add todo">
+                <button type="button" class="overlayOff">Cancel</button>
+            </form>
         </div>
     </div>
 </body>

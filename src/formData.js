@@ -1,6 +1,7 @@
 import { displayProjects, clearCards } from "./DOMstuff";
 import { Project } from "./projectCreator"
-import { newTodo } from "./todoCreator";
+import { Todo, currentIndex } from "./todoCreator";
+import { myProjects } from "./projectCreator";
 
 const newProjectForm = document.getElementById("newProjectForm")
 
@@ -17,6 +18,28 @@ newProjectForm.addEventListener("submit", function (e) {
     newProject.addProject(newProject);
     displayProjects();
 });
-    
 
-// export { newProject };
+const newTodoForm = document.getElementById("newTodoForm")
+
+newTodoForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    let index = currentIndex
+
+    const todoFormData = new FormData(newTodoForm);
+
+    for (let key of todoFormData){
+        console.log(key);
+    };
+
+
+    
+        // const newTodo = new Todo(prompt("Title"), prompt("Description"), prompt("Due Date"), prompt("Priority"));
+        const newTodo = new Todo(todoFormData.get("todoName"), "description", todoFormData.get("projectDue"), todoFormData.get("priority"));
+        clearCards();
+        myProjects[index].todos.push(newTodo);
+        console.table(myProjects[index].todos);
+        displayProjects();
+});
+
+export { newTodoForm };

@@ -68,15 +68,15 @@ body{
     border-top: 1px solid grey;
 }
 
-#lowPrio{
+#lowPriority{
     background-color: lightgreen;
 }
 
-#medPrio{
+#medPriority{
     background-color: lightyellow;
 }
 
-#highPrio{
+#highPriority{
     background-color: lightcoral;
 }
 
