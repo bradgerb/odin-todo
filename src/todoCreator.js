@@ -23,19 +23,6 @@ function newTodo(){
     console.log(currentIndex);
     
     overlayOn();
-
-
-    // let index = this.id;
-    // console.log(index);
-
-    // let todoForm = newTodoForm
-    // console.log(todoForm);
-
-    // // const newTodo = new Todo(prompt("Title"), prompt("Description"), prompt("Due Date"), prompt("Priority"));
-    // const newTodo = new Todo(todoForm.get("todoName"), "description", todoForm.get("projectDue"), todoForm.get("priority"));
-    // clearCards();
-    // myProjects[index].todos.push(newTodo);
-    // displayProjects();
 };
 
 export {newTodo, placeholderTodo, Todo, currentIndex};

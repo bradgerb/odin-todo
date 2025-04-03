@@ -86,9 +86,6 @@ function overlayOff() {
     document.getElementById("overlay").style.display = "none";
 };
 
-// const overlayStartButton = document.querySelector(".overlayForm");
-// overlayStartButton.addEventListener("click", overlayOn);
-
 const overlayOffButton = document.querySelector(".overlayOff");
 overlayOffButton.addEventListener("click", overlayOff);
 

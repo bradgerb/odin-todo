@@ -32,9 +32,6 @@ newTodoForm.addEventListener("submit", function (e) {
         console.log(key);
     };
 
-
-    
-        // const newTodo = new Todo(prompt("Title"), prompt("Description"), prompt("Due Date"), prompt("Priority"));
         const newTodo = new Todo(todoFormData.get("todoName"), "description", todoFormData.get("projectDue"), todoFormData.get("priority"));
         clearCards();
         myProjects[index].todos.push(newTodo);
