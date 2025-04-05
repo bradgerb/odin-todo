@@ -36,7 +36,7 @@ const displayProjects = ()=>{
                         removeProjectButton.setAttribute("ID", `${index}`);
                         removeProjectButton.classList.add("cardButton");
                         removeProjectButton.textContent = "Remove Project";
-                        removeProjectButton.addEventListener("click", ()=>{removeProject(index)});
+                        removeProjectButton.addEventListener("click", removeProject);
                         buttonContainer.appendChild(removeProjectButton);
 
                     card.appendChild(buttonContainer);
@@ -63,7 +63,8 @@ const displayProjects = ()=>{
                     trashButton.setAttribute("ID", i);
                     trashButton.src = trash;
                     trashButton.style.height = "18px";
-                    trashButton.addEventListener("click", removeTodo);
+                    trashButton.value = index;
+                    trashButton.addEventListener("click", ()=>{removeTodo(trashButton.value, i)});
                     todoButtons.appendChild(trashButton);
 
                 todos.appendChild(todoButtons);
@@ -94,10 +95,11 @@ function removeProject(){
     displayProjects();
 };
 
-function removeTodo(index){
-    
-    console.log(`Project ${index}`)
-    console.log(`Remove Todo ${this.id}`);
+function removeTodo(index, i){
+
+    clearCards();
+    myProjects[index].todos.splice(i, 1);
+    displayProjects();
     
 };
 
