@@ -51,7 +51,7 @@ const displayProjects = ()=>{
                 } else if(myProjects[i].todos[j].priority === "medium"){
                     todos.setAttribute("ID", "mediumPriority")
                 } else todos.setAttribute("ID", "highPriority");
-                todos.textContent = `Todo: ${myProjects[i].todos[j].title};\u00A0 \u00A0 Description: ${myProjects[i].todos[j].description}`;
+                todos.textContent = `Todo: ${myProjects[i].todos[j].title};\u00A0 \u00A0 Due: ${myProjects[i].todos[j].dueDate}`;
 
                 const todoButtons = document.createElement("div");
                 todoButtons.classList.add("todoButtonContainer");
