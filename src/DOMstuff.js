@@ -56,10 +56,7 @@ const displayProjects = ()=>{
 
                 let formatedDate = format(Date.now(), "MM/dd/yyyy");
                 if (isBefore(myProjects[i].todos[j].dueDate, formatedDate)){
-                    console.log(myProjects[i].todos[j].dueDate);
-                    console.log(formatedDate);
                     console.log("Past due");
-
                 };
 
                 const todoButtons = document.createElement("div");

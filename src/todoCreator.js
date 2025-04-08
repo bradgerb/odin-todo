@@ -1,6 +1,6 @@
 import { displayProjects, clearCards, overlayOn, overlayOff } from "./DOMstuff";
 import { myProjects } from "./projectCreator";
-import { format } from "date-fns";
+import { format, parseISO } from "date-fns";
 
 let currentProjectIndex = 0;
 
@@ -37,7 +37,7 @@ newTodoForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
     const todoFormData = new FormData(newTodoForm);
-        const newTodo = new Todo(todoFormData.get("todoName"), "description", format(todoFormData.get("todoDue"), "MM/dd/yyyy"), todoFormData.get("priority"));
+        const newTodo = new Todo(todoFormData.get("todoName"), "description", format(parseISO(todoFormData.get("todoDue")), "MM/dd/yyyy"), todoFormData.get("priority"));
         clearCards();
         newTodo.addTodo(newTodo);
         displayProjects();
