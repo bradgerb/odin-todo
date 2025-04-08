@@ -47,4 +47,4 @@ newProjectForm.addEventListener("submit", function (e) {
     displayProjects();
 });
 
-export { myProjects, Project, removeProject };
+export { myProjects, removeProject };

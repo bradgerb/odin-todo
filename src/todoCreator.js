@@ -1,7 +1,7 @@
 import { displayProjects, clearCards, overlayOn, overlayOff } from "./DOMstuff";
 import { myProjects } from "./projectCreator";
 
-let currentIndex = 0;
+let currentProjectIndex = 0;
 
 class Todo {
     constructor (title, description, dueDate, priority){
@@ -12,7 +12,7 @@ class Todo {
     };
 
     addTodo(todoName){
-        myProjects[currentIndex].todos.push(todoName);
+        myProjects[currentProjectIndex].todos.push(todoName);
     };
 };
 
@@ -20,8 +20,7 @@ const placeholderTodo = new Todo("Default", "Add some more todos", "Now", "low")
 
 function newTodo(){
 
-    currentIndex = this.id;
-    console.log(currentIndex);
+    currentProjectIndex = this.id;
     
     overlayOn();
 };
@@ -48,4 +47,4 @@ newTodoForm.addEventListener("submit", function (e) {
         overlayOff();
 });
 
-export { Todo, placeholderTodo, newTodo, removeTodo };
+export { placeholderTodo, newTodo, removeTodo };
