@@ -1,6 +1,7 @@
 import { myProjects, removeProject } from "./projectCreator";
 import { newTodo, removeTodo } from "./todoCreator";
-import trash from "./img/trash.svg"
+import { format, isBefore } from "date-fns";
+import trash from "./img/trash.svg";
 
 const container = document.querySelector(".body");
 
@@ -52,6 +53,14 @@ const displayProjects = ()=>{
                     todos.setAttribute("ID", "mediumPriority")
                 } else todos.setAttribute("ID", "highPriority");
                 todos.textContent = `Todo: ${myProjects[i].todos[j].title};\u00A0 \u00A0 Due: ${myProjects[i].todos[j].dueDate}`;
+
+                let formatedDate = format(Date.now(), "MM/dd/yyyy");
+                if (isBefore(myProjects[i].todos[j].dueDate, formatedDate)){
+                    console.log(myProjects[i].todos[j].dueDate);
+                    console.log(formatedDate);
+                    console.log("Past due");
+
+                };
 
                 const todoButtons = document.createElement("div");
                 todoButtons.classList.add("todoButtonContainer");
