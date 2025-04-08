@@ -1,3 +1,4 @@
+import { displayProjects, clearCards } from "./DOMstuff";
 import { placeholderTodo } from "./todoCreator";
 
 const myProjects = [];
@@ -21,4 +22,29 @@ const defaultProject = (function(){
     placeholderProject.addProject(placeholderProject);
 })();
 
-export { myProjects, Project };
+function removeProject(){
+
+    let a = this.id;
+
+    clearCards();
+    myProjects.splice(a, 1);
+    displayProjects();
+};
+
+const newProjectForm = document.getElementById("newProjectForm")
+
+newProjectForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const projectFormData = new FormData(newProjectForm);
+
+    let todoList = [];
+    
+    const newProject = new Project(projectFormData.get("projectName"), todoList);
+
+    clearCards();
+    newProject.addProject(newProject);
+    displayProjects();
+});
+
+export { myProjects, Project, removeProject };

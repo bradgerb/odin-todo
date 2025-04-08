@@ -1,13 +1,10 @@
-import { myProjects } from "./projectCreator";
-import { newTodoForm } from "./formData";
-import { currentIndex, newTodo } from "./todoCreator";
+import { myProjects, removeProject } from "./projectCreator";
+import { newTodo, removeTodo } from "./todoCreator";
 import trash from "./img/trash.svg"
 
 const container = document.querySelector(".body");
 
 const displayProjects = ()=>{
-
-    let index = 0;
 
     for(let i = 0; i < myProjects.length; i++){
 
@@ -26,14 +23,14 @@ const displayProjects = ()=>{
                     buttonContainer.classList.add("buttonContainer");
                 
                         const addTodoButton = document.createElement("button");
-                        addTodoButton.setAttribute("ID", `${index}`);
+                        addTodoButton.setAttribute("ID", `${i}`);
                         addTodoButton.classList.add("cardButton");
                         addTodoButton.textContent = "Add todo";
                         addTodoButton.addEventListener("click", newTodo);
                         buttonContainer.appendChild(addTodoButton);
 
                         const removeProjectButton = document.createElement("button");
-                        removeProjectButton.setAttribute("ID", `${index}`);
+                        removeProjectButton.setAttribute("ID", `${i}`);
                         removeProjectButton.classList.add("cardButton");
                         removeProjectButton.textContent = "Remove Project";
                         removeProjectButton.addEventListener("click", removeProject);
@@ -45,26 +42,26 @@ const displayProjects = ()=>{
 
             projectContainer.appendChild(cardContainer);
 
-            for(let i = 0; i < myProjects[index].todos.length; i++){
+            for(let j = 0; j < myProjects[i].todos.length; j++){
 
                 const todos = document.createElement("div");
                 todos.classList.add("todoContainer");
-                if(myProjects[index].todos[i].priority === "low"){
+                if(myProjects[i].todos[j].priority === "low"){
                     todos.setAttribute("ID", "lowPriority");
-                } else if(myProjects[index].todos[i].priority === "medium"){
+                } else if(myProjects[i].todos[j].priority === "medium"){
                     todos.setAttribute("ID", "mediumPriority")
                 } else todos.setAttribute("ID", "highPriority");
-                todos.textContent = `Todo: ${myProjects[index].todos[i].title};\u00A0 \u00A0 Description: ${myProjects[index].todos[i].description}`;
+                todos.textContent = `Todo: ${myProjects[i].todos[j].title};\u00A0 \u00A0 Description: ${myProjects[i].todos[j].description}`;
 
                 const todoButtons = document.createElement("div");
                 todoButtons.classList.add("todoButtonContainer");
 
                     const trashButton = document.createElement("img");
-                    trashButton.setAttribute("ID", i);
+                    trashButton.setAttribute("ID", j);
                     trashButton.src = trash;
                     trashButton.style.height = "18px";
-                    trashButton.value = index;
-                    trashButton.addEventListener("click", ()=>{removeTodo(trashButton.value, i)});
+                    trashButton.value = i;
+                    trashButton.addEventListener("click", ()=>{removeTodo(trashButton.value, j)});
                     todoButtons.appendChild(trashButton);
 
                 todos.appendChild(todoButtons);
@@ -74,8 +71,6 @@ const displayProjects = ()=>{
             };
 
         container.appendChild(projectContainer);
-
-        index++;
         
     };
 };
@@ -84,23 +79,6 @@ const clearCards = ()=>{
     for (let i = 0; i < myProjects.length; i++){
         container.removeChild(container.lastChild);
     };
-};
-
-function removeProject(){
-
-    let a = this.id;
-
-    clearCards();
-    myProjects.splice(a, 1);
-    displayProjects();
-};
-
-function removeTodo(index, i){
-
-    clearCards();
-    myProjects[index].todos.splice(i, 1);
-    displayProjects();
-    
 };
 
 function overlayOn() {

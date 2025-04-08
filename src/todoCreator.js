@@ -1,4 +1,5 @@
-import { overlayOn } from "./DOMstuff";
+import { displayProjects, clearCards, overlayOn, overlayOff } from "./DOMstuff";
+import { myProjects } from "./projectCreator";
 
 let currentIndex = 0;
 
@@ -8,6 +9,10 @@ class Todo {
         this.description = description;
         this.dueDate = dueDate;
         this.priority = priority;
+    };
+
+    addTodo(todoName){
+        myProjects[currentIndex].todos.push(todoName);
     };
 };
 
@@ -21,4 +26,26 @@ function newTodo(){
     overlayOn();
 };
 
-export {newTodo, placeholderTodo, Todo, currentIndex};
+function removeTodo(i, j){
+
+    clearCards();
+    myProjects[i].todos.splice(j, 1);
+    displayProjects();
+    
+};
+
+const newTodoForm = document.getElementById("newTodoForm")
+
+newTodoForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const todoFormData = new FormData(newTodoForm);
+
+        const newTodo = new Todo(todoFormData.get("todoName"), "description", todoFormData.get("projectDue"), todoFormData.get("priority"));
+        clearCards();
+        newTodo.addTodo(newTodo);
+        displayProjects();
+        overlayOff();
+});
+
+export { Todo, placeholderTodo, newTodo, removeTodo };
