@@ -15,7 +15,6 @@ class Project {
 };
 
 const defaultProject = (function(){
-
     let todos = [placeholderTodo];
 
     const placeholderProject = new Project("Placeholder", todos);
@@ -23,11 +22,8 @@ const defaultProject = (function(){
 })();
 
 function removeProject(){
-
-    let a = this.id;
-
     clearCards();
-    myProjects.splice(a, 1);
+    myProjects.splice(this.id, 1);
     displayProjects();
 };
 

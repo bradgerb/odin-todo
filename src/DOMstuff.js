@@ -60,8 +60,7 @@ const displayProjects = ()=>{
                     trashButton.setAttribute("ID", j);
                     trashButton.src = trash;
                     trashButton.style.height = "18px";
-                    trashButton.value = i;
-                    trashButton.addEventListener("click", ()=>{removeTodo(trashButton.value, j)});
+                    trashButton.addEventListener("click", ()=>{removeTodo(i, j)});
                     todoButtons.appendChild(trashButton);
 
                 todos.appendChild(todoButtons);

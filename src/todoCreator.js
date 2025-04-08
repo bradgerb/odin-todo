@@ -19,14 +19,11 @@ class Todo {
 const placeholderTodo = new Todo("Default", "Add some more todos", "Now", "low");
 
 function newTodo(){
-
     currentProjectIndex = this.id;
-    
     overlayOn();
 };
 
 function removeTodo(i, j){
-
     clearCards();
     myProjects[i].todos.splice(j, 1);
     displayProjects();
@@ -39,7 +36,6 @@ newTodoForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
     const todoFormData = new FormData(newTodoForm);
-
         const newTodo = new Todo(todoFormData.get("todoName"), "description", todoFormData.get("projectDue"), todoFormData.get("priority"));
         clearCards();
         newTodo.addTodo(newTodo);
