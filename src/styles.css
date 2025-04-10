@@ -88,6 +88,10 @@ body{
     background-color: lightcoral;
 }
 
+.pastDue{
+    color: red;
+}
+
 .XL{
     display: flex;
     align-items: center;

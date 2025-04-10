@@ -52,13 +52,20 @@ const displayProjects = ()=>{
                 } else if(myProjects[i].todos[j].priority === "medium"){
                     todos.setAttribute("ID", "mediumPriority")
                 } else todos.setAttribute("ID", "highPriority");
-                todos.textContent = `Todo: ${myProjects[i].todos[j].title};\u00A0 \u00A0 Due: ${myProjects[i].todos[j].dueDate}`;
 
-                let formatedDate = format(Date.now(), "MM/dd/yyyy");
-                if (isBefore(myProjects[i].todos[j].dueDate, formatedDate)){
-                    console.log("Past due");
-                    todos.textContent = todos.textContent + " PAST DUE";
-                };
+                const todoText = document.createElement("div");
+                todoText.classList.add("todoText");
+                todoText.textContent = `Todo: ${myProjects[i].todos[j].title};\u00A0 \u00A0 Due: ${myProjects[i].todos[j].dueDate}`;
+                todos.appendChild(todoText);
+
+                    const todoPastDue = document.createElement("div");
+                    todoPastDue.classList.add("pastDue");
+                    let formatedDate = format(Date.now(), "MM/dd/yyyy");
+                    if (isBefore(myProjects[i].todos[j].dueDate, formatedDate)){
+                        console.log("Past due");
+                        todoPastDue.textContent = " PAST DUE";
+                    };
+                    todos.appendChild(todoPastDue);
 
                 const todoButtons = document.createElement("div");
                 todoButtons.classList.add("todoButtonContainer");
@@ -72,10 +79,16 @@ const displayProjects = ()=>{
                         completedButton.setAttribute("ID", j);
                         completedButton.addEventListener('change', (e) => {
                             if (e.target.checked) {
-                              console.log(`Checkbox is checked ID ${i} ${j}`);
+                                todoPastDue.textContent = "";
+                                todoText.style.textDecoration = "line-through";
                             } else {
-                              console.log('Checkbox is not checked');
-                            }
+                                let formatedDate = format(Date.now(), "MM/dd/yyyy");
+                                if (isBefore(myProjects[i].todos[j].dueDate, formatedDate)){
+                                    console.log("Past due");
+                                    todoPastDue.textContent = " PAST DUE";
+                                };
+                                todoText.style.textDecoration = "none";
+                            };
                           });
                         completedButtonText.appendChild(completedButton);
 
