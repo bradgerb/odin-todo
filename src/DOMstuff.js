@@ -57,10 +57,27 @@ const displayProjects = ()=>{
                 let formatedDate = format(Date.now(), "MM/dd/yyyy");
                 if (isBefore(myProjects[i].todos[j].dueDate, formatedDate)){
                     console.log("Past due");
+                    todos.textContent = todos.textContent + " PAST DUE";
                 };
 
                 const todoButtons = document.createElement("div");
                 todoButtons.classList.add("todoButtonContainer");
+
+                    const completedButtonText = document.createElement("div");
+                    completedButtonText.textContent = "Completed:";
+                    todoButtons.appendChild(completedButtonText);
+
+                        const completedButton = document.createElement("INPUT");
+                        completedButton.setAttribute("type", "checkbox");
+                        completedButton.setAttribute("ID", j);
+                        completedButton.addEventListener('change', (e) => {
+                            if (e.target.checked) {
+                              console.log(`Checkbox is checked ID ${i} ${j}`);
+                            } else {
+                              console.log('Checkbox is not checked');
+                            }
+                          });
+                        completedButtonText.appendChild(completedButton);
 
                     const trashButton = document.createElement("img");
                     trashButton.setAttribute("ID", j);
