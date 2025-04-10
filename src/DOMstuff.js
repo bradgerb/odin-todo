@@ -72,11 +72,27 @@ const displayProjects = ()=>{
                 const todoButtons = document.createElement("div");
                 todoButtons.classList.add("todoButtonContainer");
 
+                    const prioritySelectorText = document.createElement("div");
+                    prioritySelectorText.textContent = "Priority: ";
+                    todoButtons.appendChild(prioritySelectorText);
+
+                        const prioritySelector = document.createElement("select")
+                        prioritySelector.setAttribute("type", "select");
+                        prioritySelectorText.appendChild(prioritySelector);
+
+                            let priorityOptions = ["Low", "Medium", "High"];
+                            for (let i = 0; i < priorityOptions.length; i++){
+                                let option = document.createElement("option");
+                                option.value = priorityOptions[i];
+                                option.text = priorityOptions[i];
+                                prioritySelector.appendChild(option);
+                            };
+
                     const completedButtonText = document.createElement("div");
                     completedButtonText.textContent = "Completed:";
                     todoButtons.appendChild(completedButtonText);
 
-                        const completedButton = document.createElement("INPUT");
+                        const completedButton = document.createElement("input");
                         completedButton.setAttribute("type", "checkbox");
                         completedButton.setAttribute("ID", j);
                         completedButton.addEventListener('change', (e) => {
