@@ -60,11 +60,13 @@ const displayProjects = ()=>{
 
                     const todoPastDue = document.createElement("div");
                     todoPastDue.classList.add("pastDue");
-                    let formatedDate = format(Date.now(), "MM/dd/yyyy");
-                    if (isBefore(myProjects[i].todos[j].dueDate, formatedDate)){
-                        console.log("Past due");
-                        todoPastDue.textContent = " PAST DUE";
+                    function checkPastDue(){
+                        let formatedDate = format(Date.now(), "MM/dd/yyyy");
+                        if (isBefore(myProjects[i].todos[j].dueDate, formatedDate)){
+                            todoPastDue.textContent = " PAST DUE";
+                        };
                     };
+                    checkPastDue();
                     todos.appendChild(todoPastDue);
 
                 const todoButtons = document.createElement("div");
@@ -82,11 +84,7 @@ const displayProjects = ()=>{
                                 todoPastDue.textContent = "";
                                 todoText.style.textDecoration = "line-through";
                             } else {
-                                let formatedDate = format(Date.now(), "MM/dd/yyyy");
-                                if (isBefore(myProjects[i].todos[j].dueDate, formatedDate)){
-                                    console.log("Past due");
-                                    todoPastDue.textContent = " PAST DUE";
-                                };
+                                checkPastDue();
                                 todoText.style.textDecoration = "none";
                             };
                           });
