@@ -28,7 +28,6 @@ function removeTodo(i, j){
     clearCards();
     myProjects[i].todos.splice(j, 1);
     displayProjects();
-    
 };
 
 const newTodoForm = document.getElementById("newTodoForm")
@@ -37,7 +36,7 @@ newTodoForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
     const todoFormData = new FormData(newTodoForm);
-        const newTodo = new Todo(todoFormData.get("todoName"), "description", format(parseISO(todoFormData.get("todoDue")), "MM/dd/yyyy"), todoFormData.get("priority"));
+        const newTodo = new Todo(todoFormData.get("todoName"), todoFormData.get("todoDescription"), format(parseISO(todoFormData.get("todoDue")), "MM/dd/yyyy"), todoFormData.get("priority"));
         clearCards();
         newTodo.addTodo(newTodo);
         displayProjects();
