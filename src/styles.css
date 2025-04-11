@@ -88,6 +88,18 @@ body{
     background-color: lightcoral;
 }
 
+.completedPriority#lowPriority{
+    background-color: grey;
+}
+
+.completedPriority#mediumPriority{
+    background-color: grey;
+}
+
+.completedPriority#highPriority{
+    background-color: grey;
+}
+
 .pastDue{
     color: red;
 }

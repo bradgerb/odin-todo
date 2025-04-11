@@ -61,8 +61,8 @@ const displayProjects = ()=>{
                     const todoPastDue = document.createElement("div");
                     todoPastDue.classList.add("pastDue");
                     function checkPastDue(){
-                        let formatedDate = format(Date.now(), "MM/dd/yyyy");
-                        if (isBefore(myProjects[i].todos[j].dueDate, formatedDate)){
+                        let formattedDate = format(Date.now(), "MM/dd/yyyy");
+                        if (isBefore(myProjects[i].todos[j].dueDate, formattedDate)){
                             todoPastDue.textContent = " PAST DUE";
                         };
                     };
@@ -88,6 +88,14 @@ const displayProjects = ()=>{
                                 prioritySelector.appendChild(option);
                             };
 
+                        if (todos.id === "lowPriority"){
+                            prioritySelector.selectedIndex = 0;
+                        } else if(todos.id === "mediumPriority"){
+                            prioritySelector.selectedIndex = 1;
+                        } else{
+                            prioritySelector.selectedIndex = 2;
+                        };
+                        
                     const completedButtonText = document.createElement("div");
                     completedButtonText.textContent = "Completed:";
                     todoButtons.appendChild(completedButtonText);
@@ -99,9 +107,11 @@ const displayProjects = ()=>{
                             if (e.target.checked) {
                                 todoPastDue.textContent = "";
                                 todoText.style.textDecoration = "line-through";
+                                todos.classList.add("completedPriority");
                             } else {
                                 checkPastDue();
                                 todoText.style.textDecoration = "none";
+                                todos.classList.remove("completedPriority");
                             };
                           });
                         completedButtonText.appendChild(completedButton);
