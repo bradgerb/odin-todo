@@ -98,7 +98,7 @@ const displayProjects = ()=>{
                                 prioritySelector.selectedIndex = 2;
                             };
 
-                            const changePriority = ()=>{
+                            function changePriority() {
                                 if (prioritySelector.value === "Low"){
                                     todoWrapper.id = "lowPriority";
                                 } else if(prioritySelector.value === "Medium"){
@@ -116,7 +116,7 @@ const displayProjects = ()=>{
                             const completedButton = document.createElement("input");
                             completedButton.setAttribute("type", "checkbox");
                             completedButton.setAttribute("ID", j);
-                            completedButton.addEventListener('change', (e) => {
+                            completedButton.addEventListener("change", (e) => {
                                 if (e.target.checked) {
                                     todoPastDue.textContent = "";
                                     todoText.style.textDecoration = "line-through";
@@ -145,7 +145,19 @@ const displayProjects = ()=>{
                     todoDescription.innerText = 
                         `Description:
                         ${myProjects[i].todos[j].description}`;
+                    todoDescription.style.display = "none";
                     todoWrapper.appendChild(todoDescription);
+                    
+                    const displayDescription = ()=>{
+                        if (todoDescription.style.display === "block"){
+                            todoDescription.style.display = "none";
+                        } else{
+                            todoDescription.style.display = "block";
+                        };
+                    };
+
+                    todoText.addEventListener("click", displayDescription);
+                    todoDescription.addEventListener("click", displayDescription);
 
                 projectContainer.appendChild(todoWrapper);
                 
