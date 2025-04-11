@@ -45,98 +45,109 @@ const displayProjects = ()=>{
 
             for(let j = 0; j < myProjects[i].todos.length; j++){
 
-                const todos = document.createElement("div");
-                todos.classList.add("todoContainer");
-                if(myProjects[i].todos[j].priority === "low"){
-                    todos.setAttribute("ID", "lowPriority");
-                } else if(myProjects[i].todos[j].priority === "medium"){
-                    todos.setAttribute("ID", "mediumPriority")
-                } else todos.setAttribute("ID", "highPriority");
+                const todoWrapper = document.createElement("div");
 
-                const todoText = document.createElement("div");
-                todoText.classList.add("todoText");
-                todoText.textContent = `Todo: ${myProjects[i].todos[j].title};\u00A0 \u00A0 Due: ${myProjects[i].todos[j].dueDate}`;
-                todos.appendChild(todoText);
+                    const todos = document.createElement("div");
+                    todos.classList.add("todoContainer");
+                    if(myProjects[i].todos[j].priority === "low"){
+                        todoWrapper.setAttribute("ID", "lowPriority");
+                    } else if(myProjects[i].todos[j].priority === "medium"){
+                        todoWrapper.setAttribute("ID", "mediumPriority")
+                    } else todoWrapper.setAttribute("ID", "highPriority");
 
-                    const todoPastDue = document.createElement("div");
-                    todoPastDue.classList.add("pastDue");
-                    function checkPastDue(){
-                        let formattedDate = format(Date.now(), "MM/dd/yyyy");
-                        if (isBefore(myProjects[i].todos[j].dueDate, formattedDate)){
-                            todoPastDue.textContent = " PAST DUE";
-                        };
-                    };
-                    checkPastDue();
-                    todos.appendChild(todoPastDue);
+                    const todoText = document.createElement("div");
+                    todoText.classList.add("todoText");
+                    todoText.textContent = `Todo: ${myProjects[i].todos[j].title};\u00A0 \u00A0 Due: ${myProjects[i].todos[j].dueDate}`;
+                    todos.appendChild(todoText);
 
-                const todoButtons = document.createElement("div");
-                todoButtons.classList.add("todoButtonContainer");
-
-                    const prioritySelectorText = document.createElement("div");
-                    prioritySelectorText.textContent = "Priority: ";
-                    todoButtons.appendChild(prioritySelectorText);
-
-                        const prioritySelector = document.createElement("select")
-                        prioritySelector.setAttribute("type", "select");
-                        prioritySelectorText.appendChild(prioritySelector);
-
-                            let priorityOptions = ["Low", "Medium", "High"];
-                            for (let i = 0; i < priorityOptions.length; i++){
-                                let option = document.createElement("option");
-                                option.value = priorityOptions[i];
-                                option.text = priorityOptions[i];
-                                prioritySelector.appendChild(option);
-                            };
-
-                        if (todos.id === "lowPriority"){
-                            prioritySelector.selectedIndex = 0;
-                        } else if(todos.id === "mediumPriority"){
-                            prioritySelector.selectedIndex = 1;
-                        } else{
-                            prioritySelector.selectedIndex = 2;
-                        };
-
-                        const changePriority = ()=>{
-                            if (prioritySelector.value === "Low"){
-                                todos.id = "lowPriority";
-                            } else if(prioritySelector.value === "Medium"){
-                                todos.id = "mediumPriority";
-                            } else {
-                                todos.id = "highPriority";
+                        const todoPastDue = document.createElement("div");
+                        todoPastDue.classList.add("pastDue");
+                        function checkPastDue(){
+                            let formattedDate = format(Date.now(), "MM/dd/yyyy");
+                            if (isBefore(myProjects[i].todos[j].dueDate, formattedDate)){
+                                todoPastDue.textContent = " PAST DUE";
                             };
                         };
-                        prioritySelector.addEventListener("change", changePriority);
-                        
-                    const completedButtonText = document.createElement("div");
-                    completedButtonText.textContent = "Completed:";
-                    todoButtons.appendChild(completedButtonText);
+                        checkPastDue();
+                        todos.appendChild(todoPastDue);
 
-                        const completedButton = document.createElement("input");
-                        completedButton.setAttribute("type", "checkbox");
-                        completedButton.setAttribute("ID", j);
-                        completedButton.addEventListener('change', (e) => {
-                            if (e.target.checked) {
-                                todoPastDue.textContent = "";
-                                todoText.style.textDecoration = "line-through";
-                                todos.classList.add("completedPriority");
-                            } else {
-                                checkPastDue();
-                                todoText.style.textDecoration = "none";
-                                todos.classList.remove("completedPriority");
+                    const todoButtons = document.createElement("div");
+                    todoButtons.classList.add("todoButtonContainer");
+
+                        const prioritySelectorText = document.createElement("div");
+                        prioritySelectorText.textContent = "Priority: ";
+                        todoButtons.appendChild(prioritySelectorText);
+
+                            const prioritySelector = document.createElement("select")
+                            prioritySelector.setAttribute("type", "select");
+                            prioritySelectorText.appendChild(prioritySelector);
+
+                                let priorityOptions = ["Low", "Medium", "High"];
+                                for (let i = 0; i < priorityOptions.length; i++){
+                                    let option = document.createElement("option");
+                                    option.value = priorityOptions[i];
+                                    option.text = priorityOptions[i];
+                                    prioritySelector.appendChild(option);
+                                };
+
+                            if (todoWrapper.id === "lowPriority"){
+                                prioritySelector.selectedIndex = 0;
+                            } else if(todoWrapper.id === "mediumPriority"){
+                                prioritySelector.selectedIndex = 1;
+                            } else{
+                                prioritySelector.selectedIndex = 2;
                             };
-                          });
-                        completedButtonText.appendChild(completedButton);
 
-                    const trashButton = document.createElement("img");
-                    trashButton.setAttribute("ID", j);
-                    trashButton.src = trash;
-                    trashButton.style.height = "18px";
-                    trashButton.addEventListener("click", ()=>{removeTodo(i, j)});
-                    todoButtons.appendChild(trashButton);
+                            const changePriority = ()=>{
+                                if (prioritySelector.value === "Low"){
+                                    todoWrapper.id = "lowPriority";
+                                } else if(prioritySelector.value === "Medium"){
+                                    todoWrapper.id = "mediumPriority";
+                                } else {
+                                    todoWrapper.id = "highPriority";
+                                };
+                            };
+                            prioritySelector.addEventListener("change", changePriority);
+                            
+                        const completedButtonText = document.createElement("div");
+                        completedButtonText.textContent = "Completed:";
+                        todoButtons.appendChild(completedButtonText);
 
-                todos.appendChild(todoButtons);
-                
-                projectContainer.appendChild(todos);
+                            const completedButton = document.createElement("input");
+                            completedButton.setAttribute("type", "checkbox");
+                            completedButton.setAttribute("ID", j);
+                            completedButton.addEventListener('change', (e) => {
+                                if (e.target.checked) {
+                                    todoPastDue.textContent = "";
+                                    todoText.style.textDecoration = "line-through";
+                                    todoWrapper.classList.add("completedPriority");
+                                } else {
+                                    checkPastDue();
+                                    todoText.style.textDecoration = "none";
+                                    todoWrapper.classList.remove("completedPriority");
+                                };
+                            });
+                            completedButtonText.appendChild(completedButton);
+
+                        const trashButton = document.createElement("img");
+                        trashButton.setAttribute("ID", j);
+                        trashButton.src = trash;
+                        trashButton.style.height = "18px";
+                        trashButton.addEventListener("click", ()=>{removeTodo(i, j)});
+                        todoButtons.appendChild(trashButton);
+
+                    todos.appendChild(todoButtons);
+
+                    todoWrapper.appendChild(todos);
+
+                    const todoDescription = document.createElement("div");
+                    todoDescription.classList.add("todoDescription");
+                    todoDescription.innerText = 
+                        `Description:
+                        ${myProjects[i].todos[j].description}`;
+                    todoWrapper.appendChild(todoDescription);
+
+                projectContainer.appendChild(todoWrapper);
                 
             };
 

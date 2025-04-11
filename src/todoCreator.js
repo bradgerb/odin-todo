@@ -17,7 +17,7 @@ class Todo {
     };
 };
 
-const placeholderTodo = new Todo("Default", "Add some more todos", "Now", "low");
+const placeholderTodo = new Todo("Default", "Add some more todos.", "Now", "low");
 
 function newTodo(){
     currentProjectIndex = this.id;
