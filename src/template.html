@@ -37,6 +37,25 @@
                 <button type="button" class="overlayOff">Cancel</button>
             </form>
         </div>
+        <div id="editOverlay">
+            <form action="" method="post" id="editTodoForm">
+                <label for="todoName">Todo name:</label><br>
+                <input type="text" id="editedTodoName" name="editedTodoName" placeholder="New name?">               
+                <br><br><label for="editedTodoDue">Due date:</label><br>
+                <input type="date" id="editedTodoDue" name="editedTodoDue">
+                <br><br>Description:<br>
+                <input type="text" id="editedTodoDescription" name="editedTodoDescription" placeholder="New Details?">
+                <br><br>Priority:<br>
+                <input type="radio" id="low" name="priority" value="low">
+                <label for="low">Low</label><br>
+                <input type="radio" id="medium" name="priority" value="medium">
+                <label for="medium">Medium</label><br>
+                <input type="radio" id="high" name="priority" value="high">
+                <label for="high">High</label>
+                <br><br><input type="submit" value="Add todo">
+                <button type="button" class="editOverlayOff">Cancel</button>
+            </form>
+        </div>
     </div>
 </body>
 </html>

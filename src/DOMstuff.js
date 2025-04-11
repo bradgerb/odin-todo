@@ -154,6 +154,7 @@ const displayProjects = ()=>{
                         todoDescriptionEditButton.textContent = "Edit";
                         todoDescriptionEditButton.addEventListener("click", (e)=>{
                             e.stopPropagation();
+                            editOverlayOn();
                             console.log("editText");
                         }, true);
                         todoDescription.appendChild(todoDescriptionEditButton);
@@ -169,7 +170,6 @@ const displayProjects = ()=>{
                     };
 
                     todoWrapper.addEventListener("click", displayDescription);
-                    // todoDescription.addEventListener("click", displayDescription);
 
                 projectContainer.appendChild(todoWrapper);
                 
@@ -194,7 +194,18 @@ function overlayOff() {
     document.getElementById("overlay").style.display = "none";
 };
 
+function editOverlayOn(){
+    document.getElementById("editOverlay").style.display = "flex";
+};
+
+function editOverlayOff() {
+    document.getElementById("editOverlay").style.display = "none";
+};
+
 const overlayOffButton = document.querySelector(".overlayOff");
 overlayOffButton.addEventListener("click", overlayOff);
+
+const editOverlayOffButton = document.querySelector(".editOverlayOff");
+editOverlayOffButton.addEventListener("click", editOverlayOff);
 
 export { displayProjects, clearCards, overlayOn, overlayOff }

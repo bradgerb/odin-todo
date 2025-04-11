@@ -127,7 +127,7 @@ body{
     margin: 10px;
 }
 
-#overlay {
+#overlay, #editOverlay{
     position: fixed; /* Sit on top of the page content */
     display: none; /* Hidden by default */
     width: 50%;
