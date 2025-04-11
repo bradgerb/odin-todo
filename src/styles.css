@@ -71,7 +71,7 @@ body{
 }
 
 .todoDescription{
-    padding-left: 30px;
+    padding: 0 0 10px 30px;
 }
 
 .todoButtonContainer{

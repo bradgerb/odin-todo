@@ -98,7 +98,8 @@ const displayProjects = ()=>{
                                 prioritySelector.selectedIndex = 2;
                             };
 
-                            function changePriority() {
+                            prioritySelector.addEventListener("click", (e)=>{
+                                e.stopPropagation();
                                 if (prioritySelector.value === "Low"){
                                     todoWrapper.id = "lowPriority";
                                 } else if(prioritySelector.value === "Medium"){
@@ -106,8 +107,7 @@ const displayProjects = ()=>{
                                 } else {
                                     todoWrapper.id = "highPriority";
                                 };
-                            };
-                            prioritySelector.addEventListener("change", changePriority);
+                            }, true);
                             
                         const completedButtonText = document.createElement("div");
                         completedButtonText.textContent = "Completed:";
@@ -116,7 +116,8 @@ const displayProjects = ()=>{
                             const completedButton = document.createElement("input");
                             completedButton.setAttribute("type", "checkbox");
                             completedButton.setAttribute("ID", j);
-                            completedButton.addEventListener("change", (e) => {
+                            completedButton.addEventListener("click", (e) => {
+                                e.stopPropagation();
                                 if (e.target.checked) {
                                     todoPastDue.textContent = "";
                                     todoText.style.textDecoration = "line-through";
@@ -126,7 +127,7 @@ const displayProjects = ()=>{
                                     todoText.style.textDecoration = "none";
                                     todoWrapper.classList.remove("completedPriority");
                                 };
-                            });
+                            }, true);
                             completedButtonText.appendChild(completedButton);
 
                         const trashButton = document.createElement("img");
@@ -144,8 +145,19 @@ const displayProjects = ()=>{
                     todoDescription.classList.add("todoDescription");
                     todoDescription.innerText = 
                         `Description:
-                        ${myProjects[i].todos[j].description}`;
+                        ${myProjects[i].todos[j].description}
+                        
+                        `;
                     todoDescription.style.display = "none";
+                    
+                        const todoDescriptionEditButton = document.createElement("button");
+                        todoDescriptionEditButton.textContent = "Edit";
+                        todoDescriptionEditButton.addEventListener("click", (e)=>{
+                            e.stopPropagation();
+                            console.log("editText");
+                        }, true);
+                        todoDescription.appendChild(todoDescriptionEditButton);
+
                     todoWrapper.appendChild(todoDescription);
                     
                     const displayDescription = ()=>{
@@ -156,8 +168,8 @@ const displayProjects = ()=>{
                         };
                     };
 
-                    todoText.addEventListener("click", displayDescription);
-                    todoDescription.addEventListener("click", displayDescription);
+                    todoWrapper.addEventListener("click", displayDescription);
+                    // todoDescription.addEventListener("click", displayDescription);
 
                 projectContainer.appendChild(todoWrapper);
                 
