@@ -95,6 +95,17 @@ const displayProjects = ()=>{
                         } else{
                             prioritySelector.selectedIndex = 2;
                         };
+
+                        const changePriority = ()=>{
+                            if (prioritySelector.value === "Low"){
+                                todos.id = "lowPriority";
+                            } else if(prioritySelector.value === "Medium"){
+                                todos.id = "mediumPriority";
+                            } else {
+                                todos.id = "highPriority";
+                            };
+                        };
+                        prioritySelector.addEventListener("change", changePriority);
                         
                     const completedButtonText = document.createElement("div");
                     completedButtonText.textContent = "Completed:";
