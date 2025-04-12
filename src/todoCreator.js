@@ -5,11 +5,12 @@ import { format, parseISO } from "date-fns";
 let currentProjectIndex = 0;
 
 class Todo {
-    constructor (title, description, dueDate, priority){
+    constructor (title, description, dueDate, priority, completed){
         this.title = title;
         this.description = description;
         this.dueDate = dueDate;
         this.priority = priority;
+        this.completed = completed;
     };
 
     addTodo(todoName){
@@ -17,7 +18,7 @@ class Todo {
     };
 };
 
-const placeholderTodo = new Todo("Default", "Add some more todos.", "Now", "low");
+const placeholderTodo = new Todo("Default", "Add some more todos.", "Now", "low", false);
 
 function newTodo(){
     currentProjectIndex = this.id;
@@ -36,7 +37,7 @@ newTodoForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
     const todoFormData = new FormData(newTodoForm);
-        const newTodo = new Todo(todoFormData.get("todoName"), todoFormData.get("todoDescription"), format(parseISO(todoFormData.get("todoDue")), "MM/dd/yyyy"), todoFormData.get("priority"));
+        const newTodo = new Todo(todoFormData.get("todoName"), todoFormData.get("todoDescription"), format(parseISO(todoFormData.get("todoDue")), "MM/dd/yyyy"), todoFormData.get("priority"), false);
         clearCards();
         newTodo.addTodo(newTodo);
         displayProjects();

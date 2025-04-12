@@ -118,16 +118,28 @@ const displayProjects = ()=>{
                             const completedButton = document.createElement("input");
                             completedButton.setAttribute("type", "checkbox");
                             completedButton.setAttribute("ID", j);
-                            completedButton.addEventListener("click", (e) => {
-                                e.stopPropagation();
-                                if (e.target.checked) {
-                                    todoPastDue.textContent = "";
+
+                            function todoComplete(){
+                                todoPastDue.textContent = "";
                                     todoText.style.textDecoration = "line-through";
                                     todoWrapper.classList.add("completedPriority");
+                            };
+
+                            if (myProjects[i].todos[j].completed === true){
+                                completedButton.checked = true;
+                                todoComplete();
+                            };
+
+                            completedButton.addEventListener("click", (e) => {
+                                e.stopPropagation();
+                                if (myProjects[i].todos[j].completed === false) {
+                                    todoComplete();
+                                    myProjects[i].todos[j].completed = true;
                                 } else {
                                     checkPastDue();
                                     todoText.style.textDecoration = "none";
                                     todoWrapper.classList.remove("completedPriority");
+                                    myProjects[i].todos[j].completed = false;
                                 };
                             }, true);
                             completedButtonText.appendChild(completedButton);
@@ -204,7 +216,7 @@ const displayProjects = ()=>{
             };
 
         container.appendChild(projectContainer);
-        
+
     };
 };
 
