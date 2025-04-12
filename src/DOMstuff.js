@@ -165,8 +165,10 @@ const displayProjects = ()=>{
                         ${myProjects[i].todos[j].description}
                         
                         `;
-                    todoDescription.style.display = "none";
-                    
+                    if (myProjects[i].todos[j].descriptionOpen === false){
+                        todoDescription.style.display = "none";
+                    };
+
                         const todoDescriptionEditButton = document.createElement("button");
                         todoDescriptionEditButton.textContent = "Edit";
                         todoDescriptionEditButton.setAttribute("id", i);
@@ -207,8 +209,10 @@ const displayProjects = ()=>{
                     const displayDescription = ()=>{
                         if (todoDescription.style.display === "block"){
                             todoDescription.style.display = "none";
+                            myProjects[i].todos[j].descriptionOpen = false;
                         } else{
                             todoDescription.style.display = "block";
+                            myProjects[i].todos[j].descriptionOpen = true;
                         };
                     };
 
