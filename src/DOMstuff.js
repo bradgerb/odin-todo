@@ -1,6 +1,6 @@
 import { myProjects, removeProject } from "./projectCreator";
 import { newTodo, removeTodo } from "./todoCreator";
-import { format, isBefore } from "date-fns";
+import { format, parseISO, isBefore } from "date-fns";
 import trash from "./img/trash.svg";
 
 let editProjectIndex;
@@ -52,10 +52,10 @@ const displayProjects = ()=>{
                     const todos = document.createElement("div");
                     todos.classList.add("todoContainer");
                     if(myProjects[i].todos[j].priority === "low"){
-                        todoWrapper.setAttribute("ID", "lowPriority");
+                        todoWrapper.setAttribute("id", "lowPriority");
                     } else if(myProjects[i].todos[j].priority === "medium"){
-                        todoWrapper.setAttribute("ID", "mediumPriority")
-                    } else todoWrapper.setAttribute("ID", "highPriority");
+                        todoWrapper.setAttribute("id", "mediumPriority")
+                    } else todoWrapper.setAttribute("id", "highPriority");
 
                     const todoText = document.createElement("div");
                     todoText.classList.add("todoText");
@@ -171,6 +171,15 @@ const displayProjects = ()=>{
                             const editTodoFormData = new FormData(editTodoForm);
                                 if (editTodoFormData.get("editTodoName")){
                                     myProjects[editProjectIndex].todos[editTodoIndex].title = editTodoFormData.get("editTodoName");
+                                };
+                                if (editTodoFormData.get("editTodoDue")){
+                                    myProjects[editProjectIndex].todos[editTodoIndex].dueDate = format(parseISO(editTodoFormData.get("editTodoDue")), "MM/dd/yyyy");
+                                };
+                                if (editTodoFormData.get("editTodoDescription")){
+                                    myProjects[editProjectIndex].todos[editTodoIndex].description = editTodoFormData.get("editTodoDescription");
+                                };
+                                if (editTodoFormData.get("editPriority")){
+                                    myProjects[editProjectIndex].todos[editTodoIndex].priority = editTodoFormData.get("editPriority");
                                 };
                             
                             editOverlayOff();
