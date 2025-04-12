@@ -3,6 +3,8 @@ import { newTodo, removeTodo } from "./todoCreator";
 import { format, isBefore } from "date-fns";
 import trash from "./img/trash.svg";
 
+let editProjectIndex;
+let editTodoIndex;
 const container = document.querySelector(".body");
 
 const displayProjects = ()=>{
@@ -152,12 +154,29 @@ const displayProjects = ()=>{
                     
                         const todoDescriptionEditButton = document.createElement("button");
                         todoDescriptionEditButton.textContent = "Edit";
+                        todoDescriptionEditButton.setAttribute("id", i);
+                        todoDescriptionEditButton.value = j;
                         todoDescriptionEditButton.addEventListener("click", (e)=>{
                             e.stopPropagation();
+                            editProjectIndex = e.target.id;
+                            editTodoIndex = e.target.value;
                             editOverlayOn();
-                            console.log("editText");
                         }, true);
                         todoDescription.appendChild(todoDescriptionEditButton);
+
+                        const editTodoForm = document.getElementById("editTodoForm")
+                        editTodoForm.addEventListener("submit", function (e) {
+                            e.preventDefault();
+
+                            const editTodoFormData = new FormData(editTodoForm);
+                                if (editTodoFormData.get("editTodoName")){
+                                    myProjects[editProjectIndex].todos[editTodoIndex].title = editTodoFormData.get("editTodoName");
+                                };
+                            
+                            editOverlayOff();
+                            clearCards();
+                            displayProjects();
+                        });
 
                     todoWrapper.appendChild(todoDescription);
                     
