@@ -104,10 +104,13 @@ const displayProjects = ()=>{
                                 e.stopPropagation();
                                 if (prioritySelector.value === "Low"){
                                     todoWrapper.id = "lowPriority";
+                                    myProjects[i].todos[j].priority = "low";
                                 } else if(prioritySelector.value === "Medium"){
                                     todoWrapper.id = "mediumPriority";
+                                    myProjects[i].todos[j].priority = "medium";
                                 } else {
                                     todoWrapper.id = "highPriority";
+                                    myProjects[i].todos[j].priority = "high";
                                 };
                             }, true);
                             
