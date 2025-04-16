@@ -1,13 +1,33 @@
+import { checkProjects } from ".";
 import { myProjects, removeProject } from "./projectCreator";
 import { newTodo, removeTodo } from "./todoCreator";
 import { format, parseISO, isBefore } from "date-fns";
 import trash from "./img/trash.svg";
+import { saveProjects } from "./localStorage"
 
 let editProjectIndex;
 let editTodoIndex;
 const container = document.querySelector(".body");
 
 const displayProjects = ()=>{
+
+    if (checkProjects === myProjects){
+        for (let i = 0; i < checkProjects.length; i++){
+            myProjects[i].title = checkProjects[i].title;
+            myProjects[i].todos = checkProjects[i].todos;
+    
+            for (let j = 0; j < myProjects[i].todos.length; j++){
+                myProjects[i].todos[j].title = checkProjects[i].todos[j].title;
+                myProjects[i].todos[j].description = checkProjects[i].todos[j].description;
+                myProjects[i].todos[j].dueDate = checkProjects[i].todos[j].dueDate;
+                myProjects[i].todos[j].priority = checkProjects[i].todos[j].priority;
+                myProjects[i].todos[j].completed = checkProjects[i].todos[j].completed;
+                myProjects[i].todos[j].descriptionOpen = checkProjects[i].todos[j].descriptionOpen;
+            };
+        };
+    }else{
+        console.log("Nothing saved");
+    };
 
     for(let i = 0; i < myProjects.length; i++){
 
@@ -225,6 +245,7 @@ const displayProjects = ()=>{
         container.appendChild(projectContainer);
 
     };
+    saveProjects(myProjects);
 };
 
 const clearCards = ()=>{
