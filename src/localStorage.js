@@ -4,9 +4,6 @@ const saveProjects = (myProjects)=>{
     let JSONProjects = JSON.stringify(myProjects);
     localStorage.setItem("myProjects", JSONProjects);
     console.log("Saved")
-
-    let storedProjects = JSON.parse(localStorage.getItem("myProjects"));
-    console.table(storedProjects);
 };
 
 const createDummyProject = ()=>{
@@ -27,7 +24,6 @@ const getProjects = ()=>{
         if(i !== 0){
             createDummyProject();
         };
-        console.log(i);
 
         projectBuilder[i].title = storedProjects[i].title;
         projectBuilder[i].todos = storedProjects[i].todos;

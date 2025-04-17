@@ -132,6 +132,7 @@ const displayProjects = ()=>{
                                     todoWrapper.id = "highPriority";
                                     myProjects[i].todos[j].priority = "high";
                                 };
+                                saveProjects(myProjects);
                             }, true);
                             
                         const completedButtonText = document.createElement("div");
@@ -164,6 +165,7 @@ const displayProjects = ()=>{
                                     todoWrapper.classList.remove("completedPriority");
                                     myProjects[i].todos[j].completed = false;
                                 };
+                                saveProjects(myProjects);
                             }, true);
                             completedButtonText.appendChild(completedButton);
 
@@ -231,14 +233,15 @@ const displayProjects = ()=>{
                     
                     const displayDescription = ()=>{
                         if(myProjects[i].todos[j]){
-                            if(todoDescription.style.display === "block"){
+                            if(myProjects[i].todos[j].descriptionOpen === true){
                                 todoDescription.style.display = "none";
                                 myProjects[i].todos[j].descriptionOpen = false;
-                            } else if(todoDescription.style.display === "none"){
+                            } else {
                                 todoDescription.style.display = "block";
                                 myProjects[i].todos[j].descriptionOpen = true;
                             };
                         };
+                        saveProjects(myProjects);
                     };
 
                     todoWrapper.addEventListener("click", displayDescription);
@@ -273,6 +276,7 @@ function editOverlayOn(){
 
 function editOverlayOff() {
     document.getElementById("editOverlay").style.display = "none";
+    saveProjects();
 };
 
 const overlayOffButton = document.querySelector(".overlayOff");
