@@ -171,7 +171,10 @@ const displayProjects = ()=>{
                         trashButton.setAttribute("ID", j);
                         trashButton.src = trash;
                         trashButton.style.height = "18px";
-                        trashButton.addEventListener("click", ()=>{removeTodo(i, j)});
+                        trashButton.addEventListener("click", (e)=>{
+                            e.stopPropagation;
+                            removeTodo(i, j);
+                        }, true);
                         todoButtons.appendChild(trashButton);
 
                     todos.appendChild(todoButtons);
@@ -227,12 +230,14 @@ const displayProjects = ()=>{
                     todoWrapper.appendChild(todoDescription);
                     
                     const displayDescription = ()=>{
-                        if (todoDescription.style.display === "block"){
-                            todoDescription.style.display = "none";
-                            myProjects[i].todos[j].descriptionOpen = false;
-                        } else{
-                            todoDescription.style.display = "block";
-                            myProjects[i].todos[j].descriptionOpen = true;
+                        if(myProjects[i].todos[j]){
+                            if(todoDescription.style.display === "block"){
+                                todoDescription.style.display = "none";
+                                myProjects[i].todos[j].descriptionOpen = false;
+                            } else if(todoDescription.style.display === "none"){
+                                todoDescription.style.display = "block";
+                                myProjects[i].todos[j].descriptionOpen = true;
+                            };
                         };
                     };
 
